@@ -87,7 +87,7 @@ class movement:
         #Обьявляем в переменные результаты проверки высоты спереди
         wforw, wcup, wcupup, wdown, wdown2 = checkhight.forward(x, y, z)
         #Перемещаем вперед если нет жидкости, стены или пропасти
-        if not any(block in bannedblocks for block in checkblockaround.checkforward(x, y, z)) and (wcup == 0 or wcup in allowedblocks) and (wdown == 0 and wforw == 0 and wdown2 != 0) or (wdown2 == 0 and wdown != 0) or (wforw != 0 and wdown2 == 0) or (wdown2 != 0 and wforw == 0 and wcup != 0) or (wdown2 != 0 and wforw != 0 and wcup == 0) or wdown != 0:
+        if not any(block in bannedblocks for block in checkblockaround.checkforward(x, y, z)) and (wcup == 0 or wcup in allowedblocks) and (wdown == 0 and wforw == 0 and wdown2 != 0) or (wdown2 == 0 and wdown != 0) or (wforw != 0 and wdown2 == 0) or (wdown2 != 0 and wforw == 0 and wcup != 0) or (wdown2 != 0 and wforw != 0 and wcup == 0) or wdown != 0 and wcup == 0 or wcup in allowedblocks:
             #Если впереди 1 блок то забираемся на него
             if wforw != 0 and (not wforw in allowedblocks or wcup in allowedblocks and wcup != 175) and wcupup == 0:
                 mc.setBlock(x, y, z, 0)
@@ -114,7 +114,7 @@ class movement:
         global x, y, z 
         #Обьявляем в переменные результаты проверки высоты справа
         rforw, rcup, rcupup, rdown, rdown2 = checkhight.right(x, y, z)
-        if not any(block in bannedblocks for block in checkblockaround.checkright(x, y, z)) and (rcup == 0 or rcup in allowedblocks) and (rdown == 0 and rforw == 0 and rdown2 != 0) or (rdown2 == 0 and rdown != 0) or (rforw != 0 and rdown2 == 0) or (rdown2 != 0 and rforw == 0 and rcup != 0) or (rdown2 != 0 and rforw != 0 and rcup == 0) or rdown != 0:
+        if not any(block in bannedblocks for block in checkblockaround.checkright(x, y, z)) and (rcup == 0 or rcup in allowedblocks) and (rdown == 0 and rforw == 0 and rdown2 != 0) or (rdown2 == 0 and rdown != 0) or (rforw != 0 and rdown2 == 0) or (rdown2 != 0 and rforw == 0 and rcup != 0) or (rdown2 != 0 and rforw != 0 and rcup == 0) or rdown != 0 and rcup == 0 or rcup in allowedblocks:
             #Если впереди 1 блок то забираемся на него
             if rforw != 0 and (not rforw in allowedblocks or rcup in allowedblocks and rcup != 175) and rcupup == 0:
                 mc.setBlock(x, y, z, 0)
@@ -141,7 +141,7 @@ class movement:
         global x, y, z
         #Обьявляем в переменные результаты проверки высоты слева
         lforw, lcup, lcupup, ldown, ldown2 = checkhight.left(x, y, z)
-        if not any(block in bannedblocks for block in checkblockaround.checkleft(x, y, z)) and (lcup == 0 or lcup in allowedblocks) and (ldown == 0 and lforw == 0 and ldown2 != 0) or (ldown2 == 0 and ldown != 0) or (lforw != 0 and ldown2 == 0) or (ldown2 != 0 and lforw == 0 and lcup != 0) or (ldown2 != 0 and lforw != 0 and lcup == 0) or ldown != 0:
+        if not any(block in bannedblocks for block in checkblockaround.checkleft(x, y, z)) and (lcup == 0 or lcup in allowedblocks) and (ldown == 0 and lforw == 0 and ldown2 != 0) or (ldown2 == 0 and ldown != 0) or (lforw != 0 and ldown2 == 0) or (ldown2 != 0 and lforw == 0 and lcup != 0) or (ldown2 != 0 and lforw != 0 and lcup == 0) or ldown != 0 and lcup == 0  or lcup in allowedblocks:
             #Если впереди 1 блок то забираемся на него
             if lforw != 0 and (not lforw in allowedblocks or lcup in allowedblocks and lcup != 175) and lcupup == 0:
                 mc.setBlock(x, y, z, 0)
@@ -168,7 +168,7 @@ class movement:
         global x, y, z
         #Обьявляем в переменные результаты проверки высоты сзади
         bforw, bcup, bcupup, bdown, bdown2 = checkhight.backward(x, y, z)
-        if not any(block in bannedblocks for block in checkblockaround.checkbackward(x, y, z)) and (bcup == 0 or bcup in allowedblocks) and (bdown == 0 and bforw == 0 and bdown2 != 0) or (bdown2 == 0 and bdown != 0) or (bforw != 0 and bdown2 == 0) or (bdown2 != 0 and bforw == 0 and bcup != 0) or (bdown2 != 0 and bforw != 0 and bcup == 0) or bdown != 0:
+        if not any(block in bannedblocks for block in checkblockaround.checkbackward(x, y, z)) and (bcup == 0 or bcup in allowedblocks) and (bdown == 0 and bforw == 0 and bdown2 != 0) or (bdown2 == 0 and bdown != 0) or (bforw != 0 and bdown2 == 0) or (bdown2 != 0 and bforw == 0 and bcup != 0) or (bdown2 != 0 and bforw != 0 and bcup == 0) or bdown != 0 and bcup == 0 or bcup in allowedblocks:
             #Если впереди 1 блок то забираемся на него
             if bforw != 0 and (not bforw in allowedblocks or bcup in allowedblocks and bcup != 175) and bcupup == 0:
                 mc.setBlock(x, y, z, 0)
